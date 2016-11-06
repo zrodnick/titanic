@@ -27,4 +27,8 @@ titanic_raw$age[is.na(titanic_raw$age)] <- mean(titanic_raw$age, na.rm=TRUE)
 
 #Discussion (4.1): Possibly, though survivability due to cabin number has a lot of possible factors, including class, 
 #location forward/back, location port/starboard, location central/outer hull, and whether or not the occupant was in their
-#cabin at the time of the crash. 
+#cabin at the time of the crash. Cabin location can probably be predicted to some degree based on fare and class, but
+#that ignores the other variables like location. 
+
+titanic1 <- mutate(titanic_raw, has_cabin_number = ifelse(titanic_raw$cabin==NA, 0, 1))
+
