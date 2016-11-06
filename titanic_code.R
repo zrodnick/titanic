@@ -30,5 +30,6 @@ titanic_raw$age[is.na(titanic_raw$age)] <- mean(titanic_raw$age, na.rm=TRUE)
 #cabin at the time of the crash. Cabin location can probably be predicted to some degree based on fare and class, but
 #that ignores the other variables like location. 
 
-titanic1 <- mutate(titanic_raw, has_cabin_number = ifelse(titanic_raw$cabin==NA, 0, 1))
+titanic1 <- mutate(titanic_raw, has_cabin_number = ifelse(is.na(titanic_raw$cabin), 0, 1))
 
+write.csv(titanic1, file="titanic_clean.csv")
